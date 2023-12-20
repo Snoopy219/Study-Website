@@ -1,0 +1,58 @@
+<script>
+    export default{
+        data(){
+            return{
+                show:false
+            };
+        },
+        methods:{
+            handleClick(){
+                this.show=!this.show;
+            },
+            handleClickEl(num){
+                if(num ==1){
+                    console.log(1);
+                }else if(num==2){
+                    console.log(2);
+                }
+            }
+        }
+    }
+</script>
+
+<template>
+    <div class="sett">
+        <img v-if="!show" src="../assets/images/plus.png" width="50" @click="handleClick">
+        <div v-if="show" class="sett1">
+            <button @click="handleClick">Close</button>
+                <h1>Add Elements</h1>
+                <div class="back">
+                    <h3>Background</h3>
+                    <img src="../assets/images/plus.png" width="20" @click="handleClickEl(1)">
+                </div>
+                <div class="music">
+                    <h3>Music</h3>
+                    <img src="../assets/images/plus.png" width="20" @click="handleClickEl(2)">
+                </div>
+        </div>
+    </div>
+</template>
+
+<style>
+    .sett1{
+        background-color: #A8DADC;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+    }
+
+    h3{
+        text-align:center;
+        margin:5px;
+    }
+    .back, .music{
+        display: flex;
+        align-items: center;
+    }
+</style>
