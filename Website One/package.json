@@ -10,7 +10,8 @@
   "dependencies": {
     "animate.css": "^4.1.1",
     "vue": "^3.3.4",
-    "vue-draggable-resizable": "^2.3.0"
+    "vue-draggable-resizable": "^2.3.0",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",

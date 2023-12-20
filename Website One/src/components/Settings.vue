@@ -1,3 +1,4 @@
+import show from Checklist as ToDoShow;
 <script>
     export default{
         data(){
@@ -10,10 +11,16 @@
                 this.show=!this.show;
             },
             handleClickEl(num){
-                if(num ==1){
-                    console.log(1);
-                }else if(num==2){
-                    console.log(2);
+                switch (num){
+                    case 1:
+                        console.log(1);
+                        break;
+                    case 2:
+                        console.log(2);
+                        break;
+                    case 3:
+                        this.$store.commit('flipToDo');
+                        break;
                 }
             }
         }
@@ -34,6 +41,10 @@
                     <h3>Music</h3>
                     <img src="../assets/images/plus.png" width="20" @click="handleClickEl(2)">
                 </div>
+                <div class="todo">
+                    <h3>To-Do List</h3>
+                    <img src="../assets/images/plus.png" width="20" @click="handleClickEl(3)">
+                </div>
         </div>
     </div>
 </template>
@@ -51,7 +62,7 @@
         text-align:center;
         margin:5px;
     }
-    .back, .music{
+    .back, .music, .todo{
         display: flex;
         align-items: center;
     }

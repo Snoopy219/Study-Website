@@ -13,19 +13,19 @@
         },
         computed: {
             seconds() {
-                if(Math.floor((this.currentTime / 1000)%60)<10){
-                    return String(Math.floor((this.currentTime / 1000)%60)).padStart(2, '0');
+                if(Math.floor((this.currentTime / 1000) % 60) < 10){
+                    return String(Math.floor((this.currentTime / 1000) % 60)).padStart(2, '0');
                 }else{
-                    return Math.floor((this.currentTime / 1000)%60);
+                    return Math.floor((this.currentTime / 1000) % 60);
                 }
             },
             minutes() {
                 return Math.floor(this.currentTime / 60000);
             },
             buttonText(){
-                if(!this.work && this.secPass==0){
+                if(!this.work && this.secPass == 0){
                     return "Start Break Time!";
-                }else if(this.secPass==0 ){
+                }else if(this.secPass == 0){
                     return "Start Studying!";
                 }else if(this.running){
                     return "Pause";
@@ -41,14 +41,17 @@
                 }
             },
             cycle(){
-                if(this.totalPomodoros==0){
+                if(this.totalPomodoros == 0){
                     return;
-                }else if((this.totalPomodoros%8==0)||(this.totalPomodoros%7==0)){
+                }else if((this.totalPomodoros % 8 == 0)
+                    ||(this.totalPomodoros % 7 == 0)){
                     console.log(this.totalPomodoros);
                     return 4;
-                }else if((this.totalPomodoros%6==0)||(this.totalPomodoros%5==0)){
+                }else if((this.totalPomodoros % 6 == 0) 
+                    ||(this.totalPomodoros % 5 == 0)){
                     return 3;
-                }else if((this.totalPomodoros%4==0)||(this.totalPomodoros%3==0)){
+                }else if((this.totalPomodoros % 4 == 0)
+                    ||(this.totalPomodoros % 3 == 0)){
                     return 2;
                 }else{
                     return 1;
@@ -58,9 +61,9 @@
         methods:{
             countdown(){
                 if(this.running){
-                    this.currentTime = this.startTime - this.secPass*1000
+                    this.currentTime = this.startTime - this.secPass * 1000;
                     if(this.currentTime>0){
-                        this.secPass++
+                        this.secPass++;
                         setTimeout(this.countdown, 1000);
                     }else{
                         this.currentTime = 0;
@@ -76,10 +79,10 @@
                     this.totalPomodoros++;
                     if(this.work){
                         this.startTime = 25*60000;
-                    }else if(!this.work && (this.totalPomodoros%8==0)){
-                        this.startTime = 15*60000;
+                    }else if(!this.work && (this.totalPomodoros % 8 == 0)){
+                        this.startTime = 15 * 60000;
                     }else{
-                        this.startTime = 5*60000;
+                        this.startTime = 5 * 60000;
                     }
                     setTimeout(this.countdown, 1000);
                 }else if(!this.running){

@@ -1,6 +1,7 @@
 <script>
 import Timer from './components/Timer.vue'
 import Settings from './components/Settings.vue'
+import Checklist from './components/Checklist.vue'
   export default{
     data(){
       return{
@@ -9,16 +10,20 @@ import Settings from './components/Settings.vue'
     },
     components: {
       Timer,
-      Settings
+      Settings,
+      Checklist
     }
   }
 </script>
 
 <template>
-  <div class="set">
+  <div class = "set">
     <Settings />
   </div>
-  <Timer />
+  <div class = "checks">
+    <Timer />
+    <Checklist />
+  </div>
 </template>
 
 <style>
@@ -28,4 +33,12 @@ import Settings from './components/Settings.vue'
     left:0;
     width: 300px
   }
+
+  .checks{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
 </style>
