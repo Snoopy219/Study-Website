@@ -1,9 +1,9 @@
-import show from Checklist as ToDoShow;
 <script>
     export default{
         data(){
             return{
-                show:false
+                show: false,
+                elShown: [false, false, false]
             };
         },
         methods:{
@@ -22,6 +22,7 @@ import show from Checklist as ToDoShow;
                         this.$store.commit('flipToDo');
                         break;
                 }
+                this.elShown[num - 1] = !this.elShown[num - 1];
             }
         }
     }
@@ -35,15 +36,18 @@ import show from Checklist as ToDoShow;
                 <h1>Add Elements</h1>
                 <div class="back">
                     <h3>Background</h3>
-                    <img src="../assets/images/plus.png" width="20" @click="handleClickEl(1)">
+                    <img v-if= "this.elShown[0]" src="../assets/images/gear.png" width="20" @click="handleClickEl(1)">
+                    <img v-else src="../assets/images/plus.png" width="20" @click="handleClickEl(1)">
                 </div>
                 <div class="music">
                     <h3>Music</h3>
-                    <img src="../assets/images/plus.png" width="20" @click="handleClickEl(2)">
+                    <img v-if= "this.elShown[1]" src="../assets/images/gear.png" width="20" @click="handleClickEl(2)">
+                    <img v-else src="../assets/images/plus.png" width="20" @click="handleClickEl(2)">
                 </div>
                 <div class="todo">
                     <h3>To-Do List</h3>
-                    <img src="../assets/images/plus.png" width="20" @click="handleClickEl(3)">
+                    <img v-if= "this.elShown[2]" src="../assets/images/gear.png" width="20" @click="handleClickEl(3)">
+                    <img v-else src="../assets/images/plus.png" width="20" @click="handleClickEl(3)">
                 </div>
         </div>
     </div>

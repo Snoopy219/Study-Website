@@ -41,28 +41,29 @@
                 }
             },
             cycle(){
-                if(this.totalPomodoros == 0){
-                    return;
-                }else if((this.totalPomodoros % 8 == 0)
-                    ||(this.totalPomodoros % 7 == 0)){
-                    console.log(this.totalPomodoros);
-                    return 4;
-                }else if((this.totalPomodoros % 6 == 0) 
-                    ||(this.totalPomodoros % 5 == 0)){
-                    return 3;
-                }else if((this.totalPomodoros % 4 == 0)
-                    ||(this.totalPomodoros % 3 == 0)){
-                    return 2;
-                }else{
-                    return 1;
-                }
+                return (Math.ceil(this.totalPomodoros / 2)) % ((8 / 2) + 1);
+                // if(this.totalPomodoros == 0){
+                //     return (Math.ceil(this.totalPomodoros / 2)) % ((8 / 2) + 1);
+                // }else if((this.totalPomodoros % 8 == 0)
+                //     ||(this.totalPomodoros % 7 == 0)){
+                //     console.log(this.totalPomodoros);
+                //     return 4;
+                // }else if((this.totalPomodoros % 6 == 0) 
+                //     ||(this.totalPomodoros % 5 == 0)){
+                //     return 3;
+                // }else if((this.totalPomodoros % 4 == 0)
+                //     ||(this.totalPomodoros % 3 == 0)){
+                //     return 2;
+                // }else{
+                //     return 1;
+                // }
             }
         },
         methods:{
             countdown(){
                 if(this.running){
                     this.currentTime = this.startTime - this.secPass * 1000;
-                    if(this.currentTime>0){
+                    if(this.currentTime > 0){
                         this.secPass++;
                         setTimeout(this.countdown, 1000);
                     }else{
@@ -78,7 +79,7 @@
                     this.running = true;
                     this.totalPomodoros++;
                     if(this.work){
-                        this.startTime = 25*60000;
+                        this.startTime = 25 * 60000;
                     }else if(!this.work && (this.totalPomodoros % 8 == 0)){
                         this.startTime = 15 * 60000;
                     }else{
@@ -89,7 +90,7 @@
                     this.running = true;
                     setTimeout(this.countdown, 1000);
                 }else{
-                    this.running=false;
+                    this.running = false;
                 }
             }
         }
@@ -99,10 +100,10 @@
 </script>
 
 <template>
-<div class="items">
+<div class = "items">
     <h1>{{ workOrPlay }}</h1>
     <h5>Cycle: {{ cycle }}</h5>
-    <h1>{{minutes}}  :  {{seconds }}</h1>
+    <h1>{{ minutes }}  :  {{ seconds }}</h1>
     <br>
     <div>
         <button @click="timeReset">{{ buttonText }}</button>

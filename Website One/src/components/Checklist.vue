@@ -49,6 +49,11 @@
     padding: 5%;
 }
 
+button {
+    padding: 5px;
+    border-radius: 4px;
+}
+
 input[type=checkbox]:checked + label.strike{
   text-decoration: line-through;
 }
