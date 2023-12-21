@@ -28,11 +28,12 @@
             <label class="strike" for={item.name}>{{ item.name }}</label>
         </div>
         <div class = "addItem">
-            <input v-model.trim="this.message" placeholder="Homework, Exams, ..." />
+            <input v-model.trim="this.message" v-on:keyup.enter="handleBttnClick" placeholder="Homework, Exams, ..." />
             <button @click = "handleBttnClick">Add Item</button>
         </div>
         <button @click = "resetList">Reset</button>
-        <h3>Percent Done: {{Math.round(((this.items.filter(item => item.checked === true).length) / items.length) * 100)}}%</h3>
+        <h3 v-if="items.length == 0">Percent Done:</h3>
+        <h3 v-else>Percent Done: {{ Math.round(((this.items.filter(item => item.checked === true).length) / items.length) * 100) }}%</h3>
     </div>
 </template>
 
