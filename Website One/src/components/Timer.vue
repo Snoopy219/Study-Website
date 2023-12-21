@@ -75,23 +75,25 @@
                 }
             },
             timeReset(){
-                if(!this.running && this.currentTime == 0){
-                    this.running = true;
-                    this.totalPomodoros++;
-                    if(this.work){
-                        this.startTime = 25 * 60000;
-                    }else if(!this.work && (this.totalPomodoros % 8 == 0)){
-                        this.startTime = 15 * 60000;
+                setTimeout(() => {
+                    if(!this.running && this.currentTime == 0){
+                        this.running = true;
+                        this.totalPomodoros++;
+                        if(this.work){
+                            this.startTime = 25 * 60000;
+                        }else if(!this.work && (this.totalPomodoros % 8 == 0)){
+                            this.startTime = 15 * 60000;
+                        }else{
+                            this.startTime = 5 * 60000;
+                        }
+                        setTimeout(this.countdown, 1000);
+                    }else if(!this.running){
+                        this.running = true;
+                        setTimeout(this.countdown, 1000);
                     }else{
-                        this.startTime = 5 * 60000;
-                    }
-                    setTimeout(this.countdown, 1000);
-                }else if(!this.running){
-                    this.running = true;
-                    setTimeout(this.countdown, 1000);
-                }else{
-                    this.running = false;
-                }
+                        this.running = false;
+                    } 
+                }, 500);
             }
         }
 
