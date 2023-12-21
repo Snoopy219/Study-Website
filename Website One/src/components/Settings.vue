@@ -3,58 +3,55 @@
         data(){
             return{
                 show: false,
-                elShown: [false, false, false]
+                numCycles: this.$store.state.numCycles,
+                timeLongBreak: this.$store.state.timeLongBreak,
+                timeShortBreak: this.$store.state.timeShortBreak,
+                timeStudy: this.$store.state.timeStudy
             };
         },
         methods:{
             handleClick(){
                 this.show=!this.show;
             },
-            handleClickEl(num){
-                switch (num){
-                    case 1:
-                        console.log(1);
-                        break;
-                    case 2:
-                        console.log(2);
-                        break;
-                    case 3:
-                        this.$store.commit('flipToDo');
-                        break;
-                }
-                this.elShown[num - 1] = !this.elShown[num - 1];
+
+            saveSet() {
+                this.$store.state.numCycles = this.numCycles;
+                this.$store.state.timeLongBreak = this.timeLongBreak;
+                this.$store.state.timeShortBreak = this.timeShortBreak;
+                this.$store.state.timeStudy = this.timeStudy;
+                this.handleClick();
             }
         }
     }
 </script>
 
 <template>
-    <div class="sett">
-        <img v-if="!show" src="../assets/images/plus.png" width="50" @click="handleClick">
-        <div v-if="show" class="sett1">
-            <button @click="handleClick">Close</button>
-                <h1>Add Elements</h1>
-                <div class="back">
-                    <h3>Background</h3>
-                    <img v-if= "this.elShown[0]" src="../assets/images/minus.png" width="20" @click="handleClickEl(1)">
-                    <img v-else src="../assets/images/plus.png" width="20" @click="handleClickEl(1)">
-                </div>
-                <div class="music">
-                    <h3>Music</h3>
-                    <img v-if= "this.elShown[1]" src="../assets/images/minus.png" width="20" @click="handleClickEl(2)">
-                    <img v-else src="../assets/images/plus.png" width="20" @click="handleClickEl(2)">
-                </div>
-                <div class="todo">
-                    <h3>To-Do List</h3>
-                    <img v-if= "this.elShown[2]" src="../assets/images/minus.png" width="20" @click="handleClickEl(3)">
-                    <img v-else src="../assets/images/plus.png" width="20" @click="handleClickEl(3)">
-                </div>
+    <div class="settings">
+        <img v-if="!show" src="../assets/images/gear.png" width="50" @click="handleClick">
+        <div v-if="show" class="settings1">
+            <button @click = "saveSet">Save</button>
+            <span>
+                <h3>Num Cycles</h3>
+                <input v-model.trim = "this.numCycles" placeholder = 4>
+            </span>
+            <span>
+                <h3>Study Time</h3>
+                <input v-model.trim = "this.timeStudy" placeholder = 25>
+            </span>
+            <span>
+                <h3>Long Break</h3>
+                <input v-model.trim = "this.timeLongBreak" placeholder = 15>
+            </span>
+            <span>
+                <h3>Short Break</h3>
+                <input v-model.trim = "this.timeShortBreak" placeholder = 5>
+            </span>
         </div>
     </div>
 </template>
 
 <style>
-    .sett1{
+    .settings1{
         background-color: #A8DADC;
         display: flex;
         align-items: center;
@@ -62,12 +59,17 @@
 
     }
 
+    span {
+        display: flex;
+        align-items: row;
+    }
+    
+    input {
+        max-width: 25px;
+    }
+
     h3{
         text-align:center;
         margin:5px;
-    }
-    .back, .music, .todo{
-        display: flex;
-        align-items: center;
     }
 </style>
