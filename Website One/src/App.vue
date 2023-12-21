@@ -2,6 +2,7 @@
 import Timer from './components/Timer.vue'
 import Settings from './components/Settings.vue'
 import Checklist from './components/Checklist.vue'
+import AddEl from './components/AddEl.vue'
   export default{
     data(){
       return{
@@ -11,13 +12,15 @@ import Checklist from './components/Checklist.vue'
     components: {
       Timer,
       Settings,
-      Checklist
+      Checklist,
+      AddEl
     }
   }
 </script>
 
 <template>
   <div class = "set">
+    <AddEl />
     <Settings />
   </div>
   <div class = "checks">
@@ -31,7 +34,12 @@ import Checklist from './components/Checklist.vue'
     position: fixed;
     top: 0;
     left:0;
-    width: 300px
+    display: flex;
+    width: 400px;
+  }
+
+  .set > * {
+    padding: 5px;
   }
 
   .checks{

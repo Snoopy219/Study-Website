@@ -41,7 +41,7 @@
                 }
             },
             cycle(){
-                return (Math.ceil(this.totalPomodoros / 2)) % ((8 / 2) + 1);
+                return (Math.ceil(this.totalPomodoros / 2)) % ((this.$store.state.numCycles) + 1);
                 // if(this.totalPomodoros == 0){
                 //     return (Math.ceil(this.totalPomodoros / 2)) % ((8 / 2) + 1);
                 // }else if((this.totalPomodoros % 8 == 0)
@@ -80,11 +80,11 @@
                         this.running = true;
                         this.totalPomodoros++;
                         if(this.work){
-                            this.startTime = 25 * 60000;
-                        }else if(!this.work && (this.totalPomodoros % 8 == 0)){
-                            this.startTime = 15 * 60000;
+                            this.startTime = this.$store.state.timeStudy * 60000;
+                        }else if(!this.work && (this.totalPomodoros % (this.$store.state.numCycles * 2) == 0)){
+                            this.startTime = this.$store.state.timeLongBreak * 60000;
                         }else{
-                            this.startTime = 5 * 60000;
+                            this.startTime = this.$store.state.timeShortBreak * 60000;
                         }
                         setTimeout(this.countdown, 1000);
                     }else if(!this.running){
