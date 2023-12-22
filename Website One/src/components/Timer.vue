@@ -40,24 +40,6 @@
                     return "🏖️ Break Time 🏖️";
                 }
             },
-            cycle(){
-                return (Math.ceil(this.totalPomodoros / 2)) % ((this.$store.state.numCycles) + 1);
-                // if(this.totalPomodoros == 0){
-                //     return (Math.ceil(this.totalPomodoros / 2)) % ((8 / 2) + 1);
-                // }else if((this.totalPomodoros % 8 == 0)
-                //     ||(this.totalPomodoros % 7 == 0)){
-                //     console.log(this.totalPomodoros);
-                //     return 4;
-                // }else if((this.totalPomodoros % 6 == 0) 
-                //     ||(this.totalPomodoros % 5 == 0)){
-                //     return 3;
-                // }else if((this.totalPomodoros % 4 == 0)
-                //     ||(this.totalPomodoros % 3 == 0)){
-                //     return 2;
-                // }else{
-                //     return 1;
-                // }
-            }
         },
         methods:{
             countdown(){
@@ -104,7 +86,7 @@
 <template>
 <div class = "items">
     <h1>{{ workOrPlay }}</h1>
-    <h5>Cycle: {{ cycle }}</h5>
+    <h5>Cycle: {{ Math.floor((this.totalPomodoros - 1) / 2) % (this.$store.state.numCycles * 1) + 1 }}</h5>
     <h1>{{ minutes }}  :  {{ seconds }}</h1>
     <br>
     <div>

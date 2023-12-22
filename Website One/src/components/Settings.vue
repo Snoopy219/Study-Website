@@ -32,19 +32,19 @@
             <button @click = "saveSet">Save</button>
             <span>
                 <h3>Num Cycles</h3>
-                <input v-model.trim = "this.numCycles" placeholder = 4>
+                <input v-model.trim = "this.numCycles" class = "type" placeholder = 4>
             </span>
             <span>
                 <h3>Study Time</h3>
-                <input v-model.trim = "this.timeStudy" placeholder = 25>
+                <input v-model.trim = "this.timeStudy" class = "type" placeholder = 25>
             </span>
             <span>
                 <h3>Long Break</h3>
-                <input v-model.trim = "this.timeLongBreak" placeholder = 15>
+                <input v-model.trim = "this.timeLongBreak" class = "type" placeholder = 15>
             </span>
             <span>
                 <h3>Short Break</h3>
-                <input v-model.trim = "this.timeShortBreak" placeholder = 5>
+                <input v-model.trim = "this.timeShortBreak"  class = "type" placeholder = 5>
             </span>
         </div>
     </div>
@@ -64,7 +64,7 @@
         align-items: row;
     }
     
-    input {
+    .type {
         max-width: 25px;
     }
 

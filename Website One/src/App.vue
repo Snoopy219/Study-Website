@@ -47,6 +47,7 @@ import AddEl from './components/AddEl.vue'
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-around;
+    width: 100%;
   }
 
 </style>

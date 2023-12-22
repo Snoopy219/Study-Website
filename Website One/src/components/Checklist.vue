@@ -28,7 +28,7 @@
             <label class="strike" for={item.name}>{{ item.name }}</label>
         </div>
         <div class = "addItem">
-            <input v-model.trim="this.message" v-on:keyup.enter="handleBttnClick" placeholder="Homework, Exams, ..." />
+            <input id = "type" v-model.trim="this.message" v-on:keyup.enter="handleBttnClick" placeholder="Homework, Exams, ..." />
             <button @click = "handleBttnClick">Add Item</button>
         </div>
         <button @click = "resetList">Reset</button>
@@ -41,7 +41,9 @@
 
 .addItem {
     display: flex;
+    flex-direction: row;
     align-items: center;
+    min-width: max-content;
 }
 .check {
     display: flex;
